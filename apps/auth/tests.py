@@ -11,7 +11,7 @@ class AuthenticationTestCase(TestCase):
     def test_jwt_token_creation(self):
         """Call the API with username and password to check if token is received or not."""
         username = 'amogh.kulkarni@gmail.com'
-        password = '5$6x3vtxjTGWwnb'
+        password = ''
 
         payload = {
             'email': username,

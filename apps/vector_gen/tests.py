@@ -14,7 +14,7 @@ class VectorGenerationTestCase(TestCase):
     def get_access_token():
         """Get JWT access token."""
         username = 'amogh.kulkarni@gmail.com'
-        password = '5$6x3vtxjTGWwnb'
+        password = '' # Change this value to add the password of the user created.
 
         payload = {
             'email': username,
