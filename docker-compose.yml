@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - server/.env
+
+  web:
+    build: .
+    command: "tail -f /dev/null"
+    env_file:
+      - server/.env
+    volumes:
+      - .:/application
+      - backend-python-site-packages:/usr/local/lib/python3.9/site-packages
+      - backend-usr-local-bin:/usr/local/bin
+    ports:
+      - "8000:8000"
+      - "5000:5000"
+    depends_on:
+      - db
+
+volumes:
+  backend-python-site-packages:
+    driver: local
+  backend-usr-local-bin:
+    driver: local
+  postgres_data:
+    driver: local
