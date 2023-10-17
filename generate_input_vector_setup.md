@@ -35,16 +35,18 @@
 
 -- Enter the username and password of the superuser you created in the previous step. Once logged in, click on the Users model on the home page and create a new user which will help in our further steps. (remember the password entered).
 
--- Once the above steps are completed, you can hit the vector generation API using Postman app or using the following commands:
+-- Once the above steps are completed, you can hit the vector generation API using Postman app or using the following commands. This commands should be run in the termial of the computer. The following command works in Linux or Mac OS. If you are using window, then Postman is the best app to test this APIs.
 
     curl -X POST http://localhost:8000/api/auth/login/ \
         -H "Content-Type: application/json" \
         -d '{"email": "<username created in django admin>", "password": "<password created in django admin>"}'
 
--- This command gives you a python dictionary with refresh and access token. Copy the access token, and run the following command to get the input vectors:
+-- This command gives you a python dictionary with refresh and access token. Copy the access token, and run the following command to get the input vectors. Same as above. If you are using windows, then these commands won't work.
 
     curl http://localhost:8000/api/get_input_vector/?input_sentence=What%20is%20the%20score%20today \
         -H "Authorization: Bearer <Access token>"
 
+-- If you want to run the tests written tests.py file in the respective apps, you can run the following commands:
 
-
+    python manage.py test apps/auth
+    python manage.py test apps/vector_gen
